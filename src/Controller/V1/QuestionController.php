@@ -79,6 +79,7 @@ class QuestionController extends AbstractController
      *     @SWG\Schema()
      * )
      *
+     * @param Request      $request
      * @param DataProvider $dataProvider
      *
      * @return JsonResponse
@@ -96,7 +97,9 @@ class QuestionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid() && count($data['choices']) == 3) {
             $items   = $dataProvider->getListOf('questions');
             $items[] = json_decode($request->getContent());
-            $dataProvider->save($items, 'questions');
+            if (!$dataProvider->save($items, 'questions')) {
+                return new JsonResponse(["Failed to save"], Response::HTTP_BAD_REQUEST);
+            }
         } else {
             return new JsonResponse(["Validation failed"], Response::HTTP_BAD_REQUEST);
         }

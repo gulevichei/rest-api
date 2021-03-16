@@ -40,6 +40,7 @@ class DataProvider
      */
     public function getListOf($fileName = '')
     {
+        $data = [];
         try {
             $data = $this->dataStoreConfiguration->getData($fileName);
             $data = $this->dataProviderService->toObject($data);
@@ -48,7 +49,6 @@ class DataProvider
                 'Data Store Error: ' . $exception->getMessage(),
                 $exception->getTrace()
             );
-            $data = [];
         }
 
         return $data;
