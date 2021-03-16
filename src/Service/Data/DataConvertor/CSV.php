@@ -59,18 +59,29 @@ class CSV implements DataConvertorInterface
      */
     public function toString($object)
     {
-        $csvData = [];
-        foreach ($object as $item) {
-            $csvData[] = implode(
+        $csvData   = [];
+        $csvData[] = '"' . implode(
                 [
-                    $item->text,
-                    $item->createdAt,
-                    $item->choices[0]->text,
-                    $item->choices[1]->text,
-                    $item->choices[2]->text,
+                    "Question text",
+                    "Created At",
+                    "Choice 1",
+                    "Choice",
+                    "Choice 3",
                 ],
                 '", "'
-            );
+            ) . '"';
+
+        foreach ($object as $item) {
+            $csvData[] = '"' . implode(
+                    [
+                        $item->text,
+                        $item->createdAt,
+                        $item->choices[0]->text,
+                        $item->choices[1]->text,
+                        $item->choices[2]->text,
+                    ],
+                    '", "'
+                ) . '"';
         }
 
         return implode($csvData, "\n");
