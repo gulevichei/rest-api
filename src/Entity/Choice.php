@@ -2,9 +2,13 @@
 
 namespace App\Entity;
 
+/**
+ * Class Choice
+ *
+ * @package App\Entity
+ */
 class Choice
 {
-
     /**
      * @var string
      */

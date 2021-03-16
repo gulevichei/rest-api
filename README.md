@@ -33,3 +33,10 @@ Run UnitTest
 php -d memory_limit=-1 vendor/bin/phpunit -c phpunit.xml.dist --no-coverage --no-logging
 
 
+Notes
+------------------------
+
+1. use .env files for configure data store file DATA_PROVIDER_TYPE possible options json and csv
+2. swagger documentation /api/doc
+3. url for get of list /v1/questions/get/{lang}
+4. url for send new question /v1/questions/post

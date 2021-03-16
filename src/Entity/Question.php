@@ -4,6 +4,11 @@ namespace App\Entity;
 
 use DateTime;
 
+/**
+ * Class Question
+ *
+ * @package App\Entity
+ */
 class Question
 {
     /**
